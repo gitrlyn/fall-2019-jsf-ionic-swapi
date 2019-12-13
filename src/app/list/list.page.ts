@@ -23,7 +23,7 @@ export class ListPage implements OnInit {
   ];
   // public items: Array<{ title: string; note: string; icon: string }> = [];
   
-  public items: string[] = ['Linda'];
+  public items: string[] = [];
 
   // DI services 
   constructor(
@@ -36,14 +36,16 @@ export class ListPage implements OnInit {
       data => {
         console.log(data);
 
-        // spread in the data - planet names
+        // spread in the data - planet names, and sort it alphabetically
         this.items = [
           ...this.items
           , ...(<any> data).results.map(x => x.name)
         ].sort();
 
+        // log the items array
         console.log(this.items);
       }
+      // log errors to console
       , err => console.error(err)
     );
   }
