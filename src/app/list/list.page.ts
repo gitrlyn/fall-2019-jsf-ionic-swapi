@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
+import { SwapiService } from '../swapi.service';
 
 @Component({
   selector: 'app-list',
@@ -21,8 +22,10 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
+  // DI services 
   constructor(
     private sharedDataFooSvc: SharedDataService
+    , private swapiSvc: SwapiService
   ) {
     for (let i = 1; i < 11; i++) {
       this.items.push({
